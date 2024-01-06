@@ -46,8 +46,8 @@ CREATE TABLE `wp_comments`  (
   `comment_author_email` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `comment_author_url` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `comment_author_IP` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `comment_date` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `comment_date_gmt` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `comment_date` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  `comment_date_gmt` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   `comment_content` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `comment_karma` int NOT NULL DEFAULT 0,
   `comment_approved` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '1',
@@ -81,7 +81,7 @@ CREATE TABLE `wp_links`  (
   `link_visible` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'Y',
   `link_owner` bigint UNSIGNED NOT NULL DEFAULT 1,
   `link_rating` int NOT NULL DEFAULT 0,
-  `link_updated` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `link_updated` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   `link_rel` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `link_notes` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `link_rss` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
@@ -455,8 +455,8 @@ DROP TABLE IF EXISTS `wp_posts`;
 CREATE TABLE `wp_posts`  (
   `ID` bigint UNSIGNED NOT NULL AUTO_INCREMENT,
   `post_author` bigint UNSIGNED NOT NULL DEFAULT 0,
-  `post_date` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `post_date_gmt` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `post_date` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  `post_date_gmt` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   `post_content` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `post_title` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `post_excerpt` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -467,8 +467,8 @@ CREATE TABLE `wp_posts`  (
   `post_name` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `to_ping` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `pinged` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `post_modified` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `post_modified_gmt` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `post_modified` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  `post_modified_gmt` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   `post_content_filtered` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `post_parent` bigint UNSIGNED NOT NULL DEFAULT 0,
   `guid` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
@@ -486,7 +486,7 @@ CREATE TABLE `wp_posts`  (
 -- ----------------------------
 -- Records of wp_posts
 -- ----------------------------
-INSERT INTO `wp_posts` VALUES (1304, 1, '2023-12-14 11:01:06', '0000-00-00 00:00:00', '', 'Lưu bản nháp tự động', '', 'auto-draft', 'open', 'open', '', '', '', '', '2023-12-14 11:01:06', '0000-00-00 00:00:00', '', 0, 'http://idconline.subblog.local:8080/?p=1304', 0, 'post', '', 0);
+INSERT INTO `wp_posts` VALUES (1304, 1, '2023-12-14 11:01:06', CURRENT_TIMESTAMP(), '', 'Lưu bản nháp tự động', '', 'auto-draft', 'open', 'open', '', '', '', '', '2023-12-14 11:01:06', CURRENT_TIMESTAMP(), '', 0, 'http://idconline.subblog.local:8080/?p=1304', 0, 'post', '', 0);
 
 -- ----------------------------
 -- Table structure for wp_term_relationships
@@ -3159,7 +3159,7 @@ CREATE TABLE `wp_users`  (
   `user_nicename` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `user_email` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `user_url` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `user_registered` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `user_registered` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   `user_activation_key` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `user_status` int NOT NULL DEFAULT 0,
   `display_name` varchar(250) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
@@ -3173,6 +3173,6 @@ CREATE TABLE `wp_users`  (
 -- Records of wp_users
 -- ----------------------------
 INSERT INTO `wp_users` VALUES (1, 'admin', '$P$B0syOqYUtbfeO/2F5hmoaddW5hrUwZ.', 'admin', 'diepcd@gmail.com', 'http://103.145.62.116', '2021-05-26 10:42:26', '', 0, 'admin');
-INSERT INTO `wp_users` VALUES (2, 'admin2', '$P$BfHMM7h7YJGNeX1f2HYRjn8Vv9DSe50', 'admin2', '', '', '0000-00-00 00:00:00', '', 0, 'admin2');
+INSERT INTO `wp_users` VALUES (2, 'admin2', '$P$BfHMM7h7YJGNeX1f2HYRjn8Vv9DSe50', 'admin2', '', '', CURRENT_TIMESTAMP(), '', 0, 'admin2');
 
 SET FOREIGN_KEY_CHECKS = 1;
